@@ -1,7 +1,9 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.3'
-gem 'mysql2'
+gem 'mysql2', :group => [:development, :test]
+gem 'pg', :group => :production
+gem 'heroku'
 gem 'jquery-rails'
 gem 'haml'
 gem "paperclip", "~> 3.0"
