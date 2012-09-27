@@ -1,0 +1,9 @@
+<div class = 'fields'>
+  <%= f.file_field :avatar %> 
+  <%= f.hidden_field :_destroy %> 
+  <%= link_to_remove_fields "remove", f %>
+  <br />
+  <%= f.fields_for :tag do |builder| %>
+    <%= render 'picture_tags', :f => builder %>        
+  <%end%>
+</div>

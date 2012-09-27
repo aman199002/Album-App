@@ -1,0 +1,12 @@
+<div class='alert-error'>
+  <% @user_session.errors.full_messages.each do |msg| %>
+    <%= msg %><br/>
+  <% end %>
+</div><br/>
+<%= form_for @user_session, :url=>{:controller =>'user_sessions', :action => 'create'} do |f|  %>  
+  <%= f.label :Email %>
+  <%= f.text_field :email %><br/>
+  <%= f.label :Password %>
+  <%= f.password_field :password %><br/>
+  <%= f.submit 'Sign In' %>
+<% end %>
