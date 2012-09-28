@@ -3,7 +3,7 @@
   <% @album.pictures.each do |picture| %>
   <tr>
   	<td>
-      <%= image_tag picture.avatar.url(:thumb) %><br/>  
+      <%= image_tag picture.avatar.url(:medium) %><br/>  
     </td>
     <td class='txt_middle'>
       <% unless picture.tag.blank? %>
