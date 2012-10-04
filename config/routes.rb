@@ -1,29 +1,23 @@
 AlbumApp::Application.routes.draw do
   get "albums/index"
-
   get "albums/new"
-
   get "albums/create"
-
   get "albums/edit"
-
   get "albums/show"
-
   get "albums/destroy"
-
   get "album/index"
-
   get "album/new"
-
   get "album/create"
-
   get "album/edit"
-
   get "album/show"
-
   get "album/destroy"
-
   get "user_sessions/new"
+
+  match 'auth/:provider/callback', to: 'user_sessions#create'
+  match 'auth/failure', to: redirect('/')
+  match 'signout', to: 'user_sessions#destroy', as: 'signout'
+  match "user_sessions/google_signin", :as => :google_signin
+  match "user_sessions/google_create", :as => :google_create
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

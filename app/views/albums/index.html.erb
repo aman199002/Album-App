@@ -3,7 +3,7 @@
 </div>
 <h1>List of Albums</h1>
 <table class='table table-striped'>
-  <% current_user.albums.each do |album| %>
+  <% @albums.each do |album| %>
   <tr>
     <td>
       <%= album.name %>
@@ -12,10 +12,10 @@
       <%= link_to 'Show', {:action => 'show', :id => album.id} %>
     </td>
     <td>
-      <%= link_to 'Edit', {:action => 'edit', :id => album.id} %>
+      <%= link_to 'Edit', {:action => 'edit', :id => album.id} if album.user == current_user %>
     </td>
     <td>  
-      <%= link_to 'Destroy', {:action => 'destroy', :id => album.id} %>
+      <%= link_to 'Destroy', {:action => 'destroy', :id => album.id} if album.user == current_user %>
     </td>
   </tr>  
   <% end %>

@@ -11,6 +11,10 @@ gem 'rmagick'
 gem 'authlogic'
 gem "twitter-bootstrap-rails"
 gem 'rspec-rails'
+gem 'omniauth-facebook'
+gem 'ruby-openid'
+gem 'rack-openid'
+gem 'httparty'
 
 group :development, :test do
   gem 'linecache19', :git => 'git://github.com/mark-moseley/linecache'
@@ -23,6 +27,5 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'  
   gem 'therubyracer', :platform => :ruby
   gem 'execjs'
-
   gem 'uglifier', '>= 1.0.3'
 end
