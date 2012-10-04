@@ -4,8 +4,10 @@
   <% end %>    
 </div><br/>
 <%= form_for @user, :url=>{:controller =>'users', :action => 'create'} do |f|  %>  
-  <%= f.label :Name %>
-  <%= f.text_field :name %><br/>
+  <%= f.label "First Name" %>
+  <%= f.text_field :first_name %><br/>
+  <%= f.label "Last Name" %>
+  <%= f.text_field :last_name %><br/>
   <%= f.label :Email %>
   <%= f.text_field :email %><br/>
   <%= f.label :Password %>
@@ -14,3 +16,7 @@
   <%= f.password_field :password_confirmation %><br/>
   <%= f.submit %>
 <% end %>
+
+<br/><br/>
+<%= link_to image_tag("google_logo.jpg", :height => '70px', :width => '70px'), google_signin_path %>
+<%= link_to image_tag("facebook.jpg", :height => '80px', :width => '80px'),'/auth/facebook' %>
