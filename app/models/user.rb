@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
       user.email = auth.info.email  
       user.password = auth.uid
       user.password_confirmation = auth.uid
-      #user.provider = auth.provider
+      user.provider = auth.provider
       user.uid = auth.uid
       user.first_name = auth.info.name.split(' ',2).first
       user.last_name = auth.info.name.split(' ',2).last
