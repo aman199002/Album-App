@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :albums
-  attr_accessible :name, :email, :password, :password_confirmation, :identifier_url, :first_name, :last_name, :provider, :uid, :oauth_token, :oauth_expires_at
+  attr_accessor :full_name
+  attr_accessible :name, :email, :password, :password_confirmation, :identifier_url, :first_name, :last_name, :provider, :uid, :oauth_token, :oauth_expires_at, :image
   acts_as_authentic do |c| 
   	c.login_field = :email
   end
@@ -14,8 +15,9 @@ class User < ActiveRecord::Base
       user.uid = auth.uid
       user.first_name = auth.info.name.split(' ',2).first
       user.last_name = auth.info.name.split(' ',2).last
+      user.image = auth.info.image
       user.oauth_token = auth.credentials.token
-      user.oauth_expires_at = Time.at(auth.credentials.expires_at)      
+      user.oauth_expires_at = Time.at(auth.credentials.expires_at)
       user.save!
     end
   end
@@ -31,6 +33,14 @@ class User < ActiveRecord::Base
                           :password_confirmation => openid.display_identifier.split('=').last,
                           :provider => 'google'
                           )    
+  end  
+
+  def full_name
+    self.full_name = self.first_name + ' ' +self.last_name
+  end
+
+  def fb_profile_photo(type)
+    self.image = self.image.split('=').first+'='+type
   end  
 
 end

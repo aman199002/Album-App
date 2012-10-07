@@ -1,6 +1,10 @@
 <div class = 'alert-success'>
   <%= flash[:notice] %>
 </div>
+<h3 class='red_color'>
+  <%= image_tag(current_user.fb_profile_photo('square')) if current_user.image %>
+  Hi <%= current_user.full_name %> 
+</h3>
 <h1>List of Albums</h1>
 <table class='table table-striped'>
   <% @albums.each do |album| %>
