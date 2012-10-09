@@ -15,7 +15,7 @@ class AlbumsController < ApplicationController
 
   def create        
     @album = current_user.albums.new(params[:album])
-    if @album.save
+    if @album.save      
       post_to_facebook if current_user.provider == "facebook"
       redirect_to :action => 'show', :id => @album.id
     else
@@ -48,8 +48,8 @@ class AlbumsController < ApplicationController
   end
 
   private
-    def post_to_facebook
-      @graph = Koala::Facebook::API.new(current_user.oauth_token)      
+    def post_to_facebook      
+      @graph = Koala::Facebook::API.new(current_user.oauth_token)
       @graph.put_connections("me", "feed", :message => "#{current_user.full_name} has uploaded album #{@album.name} on #{root_url}")
     end  
 end
