@@ -26,3 +26,16 @@
 {
 	color: red;
 }
+body
+{
+	background-image: url("/assets/background.png");
+
+}
+.margin-left-30px
+{
+	margin-left: 30px;
+}
+.picture
+{
+	background: white;
+}

@@ -1,7 +1,7 @@
 %h1= @album.name
 %table.table.table-striped
   - @album.pictures.each do |picture|
-    %tr
+    %tr.picture
       %td
         = image_tag picture.avatar.url(:medium)
         %br/

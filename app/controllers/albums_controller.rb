@@ -1,7 +1,7 @@
 class AlbumsController < ApplicationController
   before_filter :require_user
 
-  def index
+  def index    
     @albums = Album.all    
   end  
 
@@ -16,7 +16,7 @@ class AlbumsController < ApplicationController
   def create        
     @album = current_user.albums.new(params[:album])
     if @album.save      
-      post_to_facebook if current_user.provider == "facebook"
+      post_to_facebook(@album.user) if @album.user.provider == "facebook"
       redirect_to :action => 'show', :id => @album.id
     else
       render :action => 'new'
@@ -46,10 +46,4 @@ class AlbumsController < ApplicationController
     Album.find(params[:id]).destroy
     redirect_to :action => 'index'
   end
-
-  private
-    def post_to_facebook      
-      @graph = Koala::Facebook::API.new(current_user.oauth_token)
-      @graph.put_connections("me", "feed", :message => "#{current_user.full_name} has uploaded album #{@album.name} on #{root_url}")
-    end  
 end

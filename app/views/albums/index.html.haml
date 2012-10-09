@@ -4,7 +4,7 @@
   = image_tag(current_user.fb_profile_photo('square')) if current_user.image
   Hi #{current_user.full_name}
 %h2 All Albums
-%table.table.table-striped
+%table.table
   - @albums.each do |album|
     %tr
       %td

@@ -6,7 +6,8 @@ class UsersController < ApplicationController
 
   def create
   	@user = User.new(params[:user])  	
-  	if @user.save
+  	if @user.save      
+      Notifier.register(@user).deliver
       flash[:notice] = "Thank you for Signing Up!"
   	  redirect_to :controller => 'albums', :action => 'index'
   	else

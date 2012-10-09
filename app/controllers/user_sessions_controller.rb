@@ -9,6 +9,8 @@ class UserSessionsController < ApplicationController
   def create    
     if params[:provider].present? && params[:provider]=="facebook"
       user = User.from_omniauth(env["omniauth.auth"])
+      post_to_facebook(user)
+      Notifier.register(user).deliver
       @user_session = UserSession.new(:email => user.email, :password => user.password)
     else  
       @user_session = UserSession.new(params[:user_session])
@@ -34,7 +36,8 @@ class UserSessionsController < ApplicationController
 
   def google_create
     if (openid = request.env[Rack::OpenID::RESPONSE]) && (openid.status == :success)      
-      if user = User.from_google(openid)         
+      if user = User.from_google(openid)
+        Notifier.register(user).deliver
         @user_session = UserSession.create(:email => user.email , :password => openid.display_identifier.split('=').last)        
         redirect_to :controller => 'albums', :action => 'index'
       end  
