@@ -15,6 +15,9 @@ gem 'omniauth-facebook'
 gem 'ruby-openid'
 gem 'rack-openid'
 gem 'httparty'
+gem 'hpricot'
+gem 'ruby_parser'
+gem 'koala'
 
 group :development, :test do
   gem 'linecache19', :git => 'git://github.com/mark-moseley/linecache'

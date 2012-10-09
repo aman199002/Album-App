@@ -1,0 +1,15 @@
+%br/
+.alert-error
+  - @album.errors.full_messages.each do |msg|
+    = msg
+    %br/
+%br/
+= form_for @album, :url=>{:controller =>'albums', :action => 'create'}, :html => {:multipart => true} do |f|
+  = f.label :Name, :class => 'inline'
+  = f.text_field :name, :class => 'inline'
+  %br/
+  %br/
+  = f.fields_for :pictures do |builder|
+    = render :partial => 'pictures', :locals => {:f => builder}
+  %p= link_to_add_fields "Add more photos", f, :pictures
+  = f.submit
