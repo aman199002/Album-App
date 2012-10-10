@@ -19,4 +19,4 @@ $rake db:create db:migrate   # To design database
 ```
 $rails server     # To start Rails Server
 ```
-This application is also available on heroku. You can access the app with http://album-app-aman.herokuapp.com.
+This application is also available on heroku. You can access the app with http://album-app.herokuapp.com.
