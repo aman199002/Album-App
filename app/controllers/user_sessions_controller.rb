@@ -9,8 +9,10 @@ class UserSessionsController < ApplicationController
   def create    
     if params[:provider].present? && params[:provider]=="facebook"
       user = User.from_omniauth(env["omniauth.auth"])      
-      post_to_facebook(user,false) if user.new_record
-      Notifier.register(user).deliver
+      if user.new_record
+        post_to_facebook(user,false)  
+        Notifier.register(user).deliver
+      end  
       @user_session = UserSession.new(:email => user.email, :password => user.password)
     else  
       @user_session = UserSession.new(params[:user_session])
