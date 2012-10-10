@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   has_many :albums
-  attr_accessor :full_name
+  attr_accessor :full_name, :new_record
   attr_accessible :name, :email, :password, :password_confirmation, :identifier_url, :first_name, :last_name, :provider, :uid, :oauth_token, :oauth_expires_at, :image
   acts_as_authentic do |c| 
   	c.login_field = :email
@@ -8,7 +8,8 @@ class User < ActiveRecord::Base
 
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
-      user.email = auth.info.email  
+      user.email = auth.info.email
+      user.new_record = true if user.new_record?
       user.password = auth.uid
       user.password_confirmation = auth.uid
       user.provider = auth.provider

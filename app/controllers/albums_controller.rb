@@ -16,7 +16,7 @@ class AlbumsController < ApplicationController
   def create        
     @album = current_user.albums.new(params[:album])
     if @album.save      
-      post_to_facebook(@album.user) if @album.user.provider == "facebook"
+      post_to_facebook(@album.user,true) if @album.user.provider == "facebook"
       redirect_to :action => 'show', :id => @album.id
     else
       render :action => 'new'

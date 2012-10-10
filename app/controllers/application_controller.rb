@@ -39,9 +39,9 @@ class ApplicationController < ActionController::Base
     end
 
     private
-      def post_to_facebook(user)        
+      def post_to_facebook(user,album)        
         @graph = Koala::Facebook::API.new(user.oauth_token)
-        if user.albums.last
+        if album
           @graph.put_connections("me", "feed", :message => "#{user.full_name} has just uploaded album #{@album.name} on #{root_url}")
         else
           @graph.put_connections("me", "feed", :message => "#{user.full_name} has been registered to #{root_url}")
