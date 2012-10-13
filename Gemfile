@@ -18,6 +18,8 @@ gem 'httparty'
 gem 'hpricot'
 gem 'ruby_parser'
 gem 'koala'
+gem "paperclip-dropbox"
+gem 'omniauth-twitter'
 
 group :development, :test do
   gem 'linecache19', :git => 'git://github.com/mark-moseley/linecache'

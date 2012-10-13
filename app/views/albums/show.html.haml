@@ -2,7 +2,7 @@
 %table.table.table-striped
   - @album.pictures.each do |picture|
     %tr.picture
-      %td
+      %td        
         = image_tag picture.avatar.url(:medium)
         %br/
       %td.txt_middle
