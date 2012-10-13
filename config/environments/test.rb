@@ -1,5 +1,5 @@
-FACEBOOK_API_KEY = '269107753180877'
-FACEBOOK_SECRET_KEY = '6b44649e530c3fd1b6efdfc993c7fb05'
+FACEBOOK_API_KEY = 'api-key'
+FACEBOOK_SECRET_KEY = 'secret-key'
 AlbumApp::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 

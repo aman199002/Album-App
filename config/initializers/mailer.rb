@@ -7,8 +7,8 @@ ActionMailer::Base.smtp_settings = {
     openssl_verify_mode: 'none',
     :address => "smtp.gmail.com",
     :port => "587",
-    :domain => "album-app-aman.herokuapp.com/",
+    :domain => "yourdomain",
     :authentication => :plain,
-    :user_name => "noreply.albumapp@gmail.com",
-    :password => "changeIT123"
+    :user_name => "username",
+    :password => "password"
   }

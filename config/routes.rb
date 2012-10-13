@@ -13,7 +13,7 @@ AlbumApp::Application.routes.draw do
   get "album/destroy"
   get "user_sessions/new"
 
-  match 'auth/:provider/callback', to: 'user_sessions#create'
+  match 'auth/:provider/callback', to: 'user_sessions#create'  
   match 'auth/failure', to: redirect('/')
   match 'signout', to: 'user_sessions#destroy', as: 'signout'
   match "user_sessions/google_signin", :as => :google_signin
