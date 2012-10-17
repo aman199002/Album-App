@@ -1,5 +1,7 @@
-FACEBOOK_API_KEY = 'api-key'
-FACEBOOK_SECRET_KEY = 'secret-key'
+FACEBOOK_API_KEY = '269107753180877'
+FACEBOOK_SECRET_KEY = '6b44649e530c3fd1b6efdfc993c7fb05'
+TWITTER_API_KEY = 'cMeSJKzNajFCJTDaIQFmRQ'
+TWITTER_SECRET_KEY = 'zeBgtg1vMOtzX212ar6trPJARQqKquzriMHbgwiXzE'
 AlbumApp::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
