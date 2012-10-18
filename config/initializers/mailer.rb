@@ -9,6 +9,6 @@ ActionMailer::Base.smtp_settings = {
     :port => "587",
     :domain => "yourdomain",
     :authentication => :plain,
-    :user_name => "username",
-    :password => "password"
+    :user_name => "noreply.albumapp@gmail.com",
+    :password => "changeIT123"
   }
