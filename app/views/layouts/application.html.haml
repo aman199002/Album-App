@@ -21,12 +21,12 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          %a.brand{:href => "/albums/index"} AlbumApp
+          %a.brand{:href => albums_path} AlbumApp
           .container.nav-collapse
             %ul.nav
               - if current_user
-                %li= link_to 'My Albums',{:controller => 'albums', :action => 'index'}
-                %li= link_to 'New Album', {:controller => 'albums', :action => 'new'}
+                %li= link_to 'My Albums',my_albums_path
+                %li= link_to 'New Album',new_album_path
             %ul.nav.pull-right
               - if current_user
                 %li

@@ -1,7 +1,8 @@
+DEFAULT_HOST = 'http://album-app.herokuapp.com'
 FACEBOOK_API_KEY = '194333860700821'
 FACEBOOK_SECRET_KEY = '59941ca895549325119a266fd7f73225'
-TWITTER_API_KEY = 'cMeSJKzNajFCJTDaIQFmRQ'
-TWITTER_SECRET_KEY = 'zeBgtg1vMOtzX212ar6trPJARQqKquzriMHbgwiXzE'
+TWITTER_API_KEY = 'ekKWv1Z0vuRYOyYe7nzg'
+TWITTER_SECRET_KEY = 'WoPc7svEyLTaarUAi2hVpiFbqXEeZDMhda3H61WwY'
 
 AlbumApp::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb

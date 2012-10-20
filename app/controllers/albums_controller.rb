@@ -2,7 +2,7 @@ class AlbumsController < ApplicationController
   before_filter :require_user
 
   def index    
-    @albums = Album.all    
+    @albums = Album.all
   end  
 
   def new
@@ -16,8 +16,8 @@ class AlbumsController < ApplicationController
   def create        
     @album = current_user.albums.new(params[:album])
     if @album.save      
-      post_to_facebook(@album.user,true) if @album.user.provider == "facebook"
-      redirect_to :action => 'show', :id => @album.id
+      post_to_facebook(@album.user) if @album.user.provider == "facebook"
+      redirect_to @album
     else
       render :action => 'new'
     end  
@@ -31,7 +31,7 @@ class AlbumsController < ApplicationController
     @album = Album.find(params[:id])   
     
     if @album.update_attributes(params[:album])
-      redirect_to :action => 'show', :id => @album.id
+      redirect_to @album
     else
       1.times {@album.pictures.build}
       render :action => 'new'
@@ -44,6 +44,11 @@ class AlbumsController < ApplicationController
 
   def destroy
     Album.find(params[:id]).destroy
-    redirect_to :action => 'index'
+    redirect_to albums_path
   end
+
+  def my_albums
+    @albums = current_user.albums
+    render :index
+  end  
 end

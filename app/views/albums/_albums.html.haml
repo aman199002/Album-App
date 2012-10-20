@@ -1,0 +1,10 @@
+- @albums.each do |album|
+  %tr
+    %td
+      = album.name
+    %td
+      = link_to 'Show',album_path(album)
+    %td
+      = link_to 'Edit',album_path(album) if album.user == current_user
+    %td
+      = link_to 'Destroy',album_path(album),:method => 'delete', :confirm => "Are you sure?" if album.user == current_user

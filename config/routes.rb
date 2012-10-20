@@ -1,16 +1,7 @@
 AlbumApp::Application.routes.draw do
-  get "albums/index"
-  get "albums/new"
-  get "albums/create"
-  get "albums/edit"
-  get "albums/show"
-  get "albums/destroy"
-  get "album/index"
-  get "album/new"
-  get "album/create"
-  get "album/edit"
-  get "album/show"
-  get "album/destroy"
+  
+  get :my_albums, to: 'albums#my_albums'
+  resources :albums
   get "user_sessions/new"
 
   match 'auth/:provider/callback', to: 'user_sessions#create'  

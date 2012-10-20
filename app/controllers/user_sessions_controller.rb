@@ -6,13 +6,9 @@ class UserSessionsController < ApplicationController
     @user_session = UserSession.new
   end
 
-  def create    
-    if params[:provider].present? && params[:provider]=="facebook"
-      user = User.from_omniauth(env["omniauth.auth"])      
-      if user.new_user
-        post_to_facebook(user,false)  
-        Notifier.register(user).deliver
-      end  
+  def create
+    if params[:provider].present? && (params[:provider]=="facebook" || params[:provider]=="twitter")
+      user = User.from_omniauth(env["omniauth.auth"])
       @user_session = UserSession.new(:email => user.email, :password => user.password)
     else  
       @user_session = UserSession.new(params[:user_session])

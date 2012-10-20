@@ -1,17 +1,8 @@
 .alert-success
   = flash[:notice]
 %h3.red_color
-  = image_tag(current_user.fb_profile_photo('square')) if current_user.image
+  = image_tag(current_user.profile_photo('square'), :height => '50px',:width => '50px') if current_user.image
   Hi #{current_user.full_name}
 %h2 All Albums
 %table.table
-  - @albums.each do |album|
-    %tr
-      %td
-        = album.name
-      %td
-        = link_to 'Show', {:action => 'show', :id => album.id}
-      %td
-        = link_to 'Edit', {:action => 'edit', :id => album.id} if album.user == current_user
-      %td
-        = link_to 'Destroy', {:action => 'destroy', :id => album.id}, :confirm => "Are you sure?" if album.user == current_user
+  = render :partial =>'albums'

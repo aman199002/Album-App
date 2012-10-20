@@ -3,24 +3,17 @@
     = msg
     %br/
 %br/
-= form_for @user, :url=>{:controller =>'users', :action => 'create'} do |f|
-  = f.label "First Name"
-  = f.text_field :first_name
-  %br/
-  = f.label "Last Name"
-  = f.text_field :last_name
-  %br/
-  = f.label :Email
-  = f.text_field :email
-  %br/
-  = f.label :Password
-  = f.password_field :password
-  %br/
-  = f.label 'Confirm Password'
-  = f.password_field :password_confirmation
-  %br/
-  = f.submit
+
+.span6
+  = render 'form'
+
 %br/
-%br/
-= link_to image_tag("google_logo.jpg", :height => '80px', :width => '70px'), google_signin_path
-= link_to image_tag("facebook.jpg", :height => '80px', :width => '80px'),'/auth/facebook', :class => "margin-left-30px"
+.span3    
+  .row  
+    = link_to image_tag("facebook.jpg", :height => '80px', :width => '80px'),'/auth/facebook'
+  %br/  
+  .row
+    = link_to image_tag("twitter.jpg", :height => '80px', :width => '80px'),'/auth/twitter'
+  %br/
+  .row
+    = link_to image_tag("google_logo.jpg", :height => '80px', :width => '80px'), google_signin_path 
