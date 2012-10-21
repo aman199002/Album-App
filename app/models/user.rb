@@ -51,8 +51,10 @@ class User < ActiveRecord::Base
   end
 
   def set_image(auth)
-    if auth.provider == 'twitter'      
+    if auth.provider == 'twitter'
       self.image = auth.info.image.sub("_normal", "")
+    else
+      self.image
     end      
   end
 
