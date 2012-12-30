@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   helper_method :current_user_session, :current_user
+  
   private
     def current_user_session
       logger.debug "ApplicationController::current_user_session"
@@ -37,10 +38,9 @@ class ApplicationController < ActionController::Base
       redirect_to(session[:return_to] || default)
       session[:return_to] = nil
     end
-
-    private
-      def post_to_facebook(user)        
-        graph = Koala::Facebook::API.new(user.oauth_token)        
-        graph.put_connections("me", "feed", :message => "#{user.full_name} has just uploaded album #{@album.name} on #{root_url}")        
-      end  
+    
+    def post_to_facebook(user)        
+      graph = Koala::Facebook::API.new(user.oauth_token)        
+      graph.put_connections("me", "feed", :message => "#{user.full_name} has just uploaded album #{@album.name} on #{root_url}")        
+    end  
 end

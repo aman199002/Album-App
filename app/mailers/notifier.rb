@@ -1,5 +1,5 @@
 class Notifier < ActionMailer::Base
-  default from: "from@example.com"
+  default from: "'Albums' noreply.albumapp@gmail.com"
 
   def register(user)
   	@user = user    

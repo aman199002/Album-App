@@ -1,5 +1,7 @@
 AlbumApp::Application.routes.draw do
   
+  get "home/index"
+
   get :my_albums, to: 'albums#my_albums'
   resources :albums
   get "user_sessions/new"
